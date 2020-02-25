@@ -5,8 +5,8 @@ pipeline {
       steps {
         sh 'git fetch --depth=500'
         sh 'latesttag=$(git describe --always)'
-        sh 'echo checking out ${latesttag}'
-        sh 'git checkout ${latesttag}'
+        sh 'echo "checking out ${latesttag}"'
+        sh 'git checkout $latesttag'
       }
     }
 
