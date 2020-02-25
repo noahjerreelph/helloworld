@@ -4,9 +4,8 @@ pipeline {
     stage('Build') {
       steps {
         sh 'git fetch --depth=500'
-        sh 'latesttag=$(git describe --always)'
-        sh 'echo "checking out ${latesttag}"'
-        sh 'git checkout $latesttag'
+        sh 'latesttag=$(git describe --tag --always)'
+        sh 'git checkout ${latesttag}'
       }
     }
 
