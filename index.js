@@ -1,8 +1,7 @@
 const http = require('http');
 
 const hostname 	= '0.0.0.0';
-const env 		=  process.env.NODE_ENV != "" ? process.env.NODE_ENV : "staging";
-const port 		=  env == "staging" ? 9001 : 9002;
+const port 		=  process.env.NODE_ENV == "production" ? 9001 : 9002;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
