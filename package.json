@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/v88NoahJerreel/helloworld#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "config": "^3.2.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0"
   }
 }
