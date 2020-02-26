@@ -1,6 +1,6 @@
 {
   "name": "helloworld",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Sample Hello World with NodeJS",
   "main": "index.js",
   "scripts": {
