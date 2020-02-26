@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 app.get("/subscribe", (req, res) => {
       res.statusCode = 200;
 	  res.setHeader('Content-Type', 'text/plain');
-	  res.end('Are you sure you want to subscribe?');
+	  res.end('Do you want to subscribe to Village88 Projects?');
 })
 
 server.listen(port, hostname, () => {
