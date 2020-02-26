@@ -17,6 +17,9 @@ pipeline {
     stage('Release') {
         when { tag "*" }
         steps {
+          sshCommand remote: remote, command: 'cd /var/www/helloworld/helloworld_staging && git fetch --depth=500 && latesttag=$(git describe --tag --always) && git checkout ${latesttag}'
+          sshCommand remote: remote, command: 'uid=$(forever list | grep /var/www/hello_world/helloworld/index.js  | cut -c24-27) && forever stop $uid'
+          sshCommand remote: remote, command: 'NODE_ENV=production forever start /var/www/hello_world/helloworld/index.js'
         }
     }
   }
