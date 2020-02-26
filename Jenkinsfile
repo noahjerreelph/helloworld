@@ -5,9 +5,9 @@ pipeline {
             when { branch "master" }
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'DCJenkins', keyFileVariable: 'identity',  usernameVariable: 'userName')]) {
-                    sshCommand remote: [ host: "52.42.127.239", allowAnyHosts: true, user: userName, identityFile: identity ], command: 'cd /var/www/helloworld/helloworld_staging && sudo git pull origin master'
-                    sshCommand remote: [ host: "52.42.127.239", allowAnyHosts: true, user: userName, identityFile: identity ], command: 'uid=$(forever list | grep /var/www/hello_world/helloworld_staging/index.js  | cut -c24-27) && forever stop $uid'
-                    sshCommand remote: [ host: "52.42.127.239", allowAnyHosts: true, user: userName, identityFile: identity ], command: 'NODE_ENV=staging forever start /var/www/hello_world/helloworld_staging/index.js'
+                    sshCommand remote: [ name: 'DCJenkins', host: "52.42.127.239", allowAnyHosts: true, user: userName, identityFile: identity ], command: 'cd /var/www/helloworld/helloworld_staging && sudo git pull origin master'
+                    sshCommand remote: [ name: 'DCJenkins', host: "52.42.127.239", allowAnyHosts: true, user: userName, identityFile: identity ], command: 'uid=$(forever list | grep /var/www/hello_world/helloworld_staging/index.js  | cut -c24-27) && forever stop $uid'
+                    sshCommand remote: [ name: 'DCJenkins', host: "52.42.127.239", allowAnyHosts: true, user: userName, identityFile: identity ], command: 'NODE_ENV=staging forever start /var/www/hello_world/helloworld_staging/index.js'
                 }                 
             }
         }
