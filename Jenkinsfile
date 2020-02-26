@@ -21,14 +21,17 @@ pipeline {
     }
     environment {
         repoURL = 'https://github.com/v88NoahJerreel/helloworld.git'
+        DCJenkinsRemote = [:]
 
-        remote  =  withCredentials([sshUserPrivateKey(credentialsId: 'DCJenkins', keyFileVariable: 'identity',  usernameVariable: 'userName')]) {
+        withCredentials([sshUserPrivateKey(credentialsId: 'DCJenkins', keyFileVariable: 'identity',  usernameVariable: 'userName')]) {
             def remote = [:] 
             remote.name = "DC Jenkins" 
             remote.host = "52.42.127.239"
             remote.allowAnyHosts = true 
             remote.user = userName 
             remote.identityFile = identity
+
+            DCJenkinsRemote = remote
         }
     }
 }
