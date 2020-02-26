@@ -4,6 +4,8 @@ pipeline {
         stage('Test') {
             when { branch "master" }
             steps {
+                sh 'printenv'
+                sh 'echo Pulling... ' + env.GIT_BRANCH
                 withCredentials([sshUserPrivateKey(credentialsId: 'DCJenkins', keyFileVariable: 'identity',  usernameVariable: 'userName')]) {
                     sshCommand remote: [ name: 'DCJenkins', host: "52.42.127.239", allowAnyHosts: true, user: userName, identityFile: identity ], command: 'cd /var/www/hello_world/helloworld_staging && sudo git checkout . && sudo git pull origin master && sudo npm install'
                     sshCommand remote: [ name: 'DCJenkins', host: "52.42.127.239", allowAnyHosts: true, user: userName, identityFile: identity ], command: 'uid=$(forever list | grep /var/www/hello_world/helloworld_staging/index.js  | cut -c24-27) && forever stop $uid'
