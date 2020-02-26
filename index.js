@@ -6,7 +6,7 @@ const port 		=  process.env.NODE_ENV == "production" ? 9001 : 9002;
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
+  res.end('Hello World from Village88!');
 });
 
 server.listen(port, hostname, () => {
