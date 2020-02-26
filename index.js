@@ -19,6 +19,12 @@ app.get("/subscribe", (req, res) => {
 	  res.end('Do you want to subscribe to Village88 Projects?');
 })
 
+app.get("/unsubscribe", (req, res) => {
+      res.statusCode = 200;
+	  res.setHeader('Content-Type', 'text/plain');
+	  res.end('Are you sure you want to unsubscribe?');
+})
+
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
