@@ -1,14 +1,14 @@
 pipeline {
-    agent any
+    agent any    
+    withCredentials([sshUserPrivateKey(credentialsId: 'DCJenkins', keyFileVariable: 'identity',  usernameVariable: 'userName')]) {
+        def remote = [:] 
+        remote.name = "DC Jenkins" 
+        remote.host = "52.42.127.239"
+        remote.allowAnyHosts = true 
+        remote.user = userName 
+        remote.identityFile = identity        
+    }     
     stages {
-        withCredentials([sshUserPrivateKey(credentialsId: 'DCJenkins', keyFileVariable: 'identity',  usernameVariable: 'userName')]) {
-            def remote = [:] 
-            remote.name = "DC Jenkins" 
-            remote.host = "52.42.127.239"
-            remote.allowAnyHosts = true 
-            remote.user = userName 
-            remote.identityFile = identity        
-        }     
         stage('Test') {
             when { branch "master" }
             steps {       
