@@ -1,0 +1,27 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  color: #fff;
+}
+
+body {
+  background: black;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+div {
+  border: 1px solid white;
+  min-width: 70%;
+  min-height: 505;
+}
+
+li {
+  list-style: none;
+}
+
+li a{
+
+  color: #fff;
+}
