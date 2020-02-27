@@ -12,7 +12,7 @@ pipeline {
             }
         }
         stage('Release') {
-            when { tag "*" }
+            when { buildingTag() }
             steps {
                  withCredentials([sshUserPrivateKey(credentialsId: 'DCJenkins', keyFileVariable: 'identity',  usernameVariable: 'userName')]) {
                      sshCommand remote: [ name: 'DCJenkins', host: "52.42.127.239", allowAnyHosts: true, user: userName, identityFile: identity ], command: 'cd /var/www/hello_world/helloworld && sudo git checkout . && sudo git fetch && sudo git checkout '+ env.GIT_BRANCH +'  && sudo npm install'
